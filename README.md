@@ -1,2 +1,3 @@
-# Multipler Shooter Game
-Losseon done from Udemy provided by Gale
+# My Sample Platformer Game
+
+To be used for SIG Game Spring 2026

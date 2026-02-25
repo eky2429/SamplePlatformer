@@ -1,21 +1,94 @@
 [gd_scene format=3 uid="uid://ciqic8dkx22pv"]
 
+[ext_resource type="Texture2D" uid="uid://cj6sbmleq7i5g" path="res://Sprites/parallaxlayers0.png" id="1_2irst"]
+[ext_resource type="Texture2D" uid="uid://bl30b58ktpv7r" path="res://icon.svg" id="1_7lihs"]
 [ext_resource type="PackedScene" uid="uid://dodrn2fumam11" path="res://Scenes/player.tscn" id="1_gl6un"]
+[ext_resource type="Texture2D" uid="uid://7cq1h8b4s86a" path="res://Sprites/parallaxlayers1.png" id="2_bf53h"]
 [ext_resource type="PackedScene" uid="uid://mlo18m4hd5te" path="res://Scenes/ground.tscn" id="2_j5yw3"]
 [ext_resource type="PackedScene" uid="uid://btbjvkrqd0kmj" path="res://Scenes/coin.tscn" id="2_kldst"]
+[ext_resource type="Texture2D" uid="uid://bo1ah2fd2ktkk" path="res://Sprites/parallaxlayers2.png" id="3_71axn"]
 [ext_resource type="PackedScene" uid="uid://bg541uadi6j7t" path="res://Scenes/goal.tscn" id="3_b2bpf"]
 [ext_resource type="PackedScene" uid="uid://dthd504tsfau0" path="res://Scenes/ui.tscn" id="4_kldst"]
+[ext_resource type="Texture2D" uid="uid://d3o6v542xks14" path="res://Sprites/parallaxlayers3.png" id="9_bf53h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71axn"]
+size = Vector2(512, 128)
+
+[sub_resource type="Animation" id="Animation_dahhg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3776, 448)]
+}
+
+[sub_resource type="Animation" id="Animation_3so38"]
+resource_name = "new_animation"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3776, 448), Vector2(4992, 512)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3cx6b"]
+_data = {
+&"RESET": SubResource("Animation_dahhg"),
+&"new_animation": SubResource("Animation_3so38")
+}
 
 [node name="Node" type="Node" unique_id=313585891]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=32933137]
+layer = -1
+
+[node name="Sky" type="Parallax2D" parent="CanvasLayer" unique_id=112404935]
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(2500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Sky" unique_id=1378727507]
+position = Vector2(768, 0)
+texture = ExtResource("1_2irst")
+
+[node name="Clouds" type="Parallax2D" parent="CanvasLayer" unique_id=1200576710]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(2500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Clouds" unique_id=98572596]
+position = Vector2(768, 0)
+texture = ExtResource("2_bf53h")
+
+[node name="Hills" type="Parallax2D" parent="CanvasLayer" unique_id=483579194]
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(2500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Hills" unique_id=1389316572]
+position = Vector2(768, 0)
+texture = ExtResource("3_71axn")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=606706040]
-position = Vector2(257, 128)
+position = Vector2(193, 0)
 limit_left = 0
-limit_right = 3448
+limit_right = 6044
 limit_bottom = 628
 
 [node name="Player" parent="." unique_id=878181784 instance=ExtResource("1_gl6un")]
-position = Vector2(256, 128)
+position = Vector2(192, 0)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=271145037]
 position = Vector2(1, 0)
@@ -42,7 +115,7 @@ position = Vector2(2496, 320)
 position = Vector2(2624, 320)
 
 [node name="Goal" parent="Coins" unique_id=735299078 instance=ExtResource("3_b2bpf")]
-position = Vector2(3264, 256)
+position = Vector2(5630, 256)
 
 [node name="Ground" type="Node" parent="." unique_id=1247862294]
 
@@ -131,52 +204,52 @@ position = Vector2(-64, -192)
 position = Vector2(-192, -192)
 
 [node name="Ground55" parent="Ground" unique_id=49871811 instance=ExtResource("2_j5yw3")]
-position = Vector2(3648, 448)
+position = Vector2(6014, 448)
 
 [node name="Ground56" parent="Ground" unique_id=1179199096 instance=ExtResource("2_j5yw3")]
-position = Vector2(3520, 448)
+position = Vector2(5886, 448)
 
 [node name="Ground57" parent="Ground" unique_id=1475630719 instance=ExtResource("2_j5yw3")]
-position = Vector2(3648, 576)
+position = Vector2(6014, 576)
 
 [node name="Ground58" parent="Ground" unique_id=2064068582 instance=ExtResource("2_j5yw3")]
-position = Vector2(3520, 576)
+position = Vector2(5886, 576)
 
 [node name="Ground59" parent="Ground" unique_id=423392127 instance=ExtResource("2_j5yw3")]
-position = Vector2(3648, 192)
+position = Vector2(6014, 192)
 
 [node name="Ground60" parent="Ground" unique_id=1558296625 instance=ExtResource("2_j5yw3")]
-position = Vector2(3520, 192)
+position = Vector2(5886, 192)
 
 [node name="Ground61" parent="Ground" unique_id=1236941535 instance=ExtResource("2_j5yw3")]
-position = Vector2(3648, 320)
+position = Vector2(6014, 320)
 
 [node name="Ground62" parent="Ground" unique_id=1687974147 instance=ExtResource("2_j5yw3")]
-position = Vector2(3520, 320)
+position = Vector2(5886, 320)
 
 [node name="Ground63" parent="Ground" unique_id=806940001 instance=ExtResource("2_j5yw3")]
-position = Vector2(3648, -64)
+position = Vector2(6014, -64)
 
 [node name="Ground64" parent="Ground" unique_id=1614067660 instance=ExtResource("2_j5yw3")]
-position = Vector2(3520, -64)
+position = Vector2(5886, -64)
 
 [node name="Ground65" parent="Ground" unique_id=2123663113 instance=ExtResource("2_j5yw3")]
-position = Vector2(3648, 64)
+position = Vector2(6014, 64)
 
 [node name="Ground66" parent="Ground" unique_id=1964660380 instance=ExtResource("2_j5yw3")]
-position = Vector2(3520, 64)
+position = Vector2(5886, 64)
 
 [node name="Ground67" parent="Ground" unique_id=2035076545 instance=ExtResource("2_j5yw3")]
-position = Vector2(3648, -320)
+position = Vector2(6014, -320)
 
 [node name="Ground68" parent="Ground" unique_id=1694560020 instance=ExtResource("2_j5yw3")]
-position = Vector2(3520, -320)
+position = Vector2(5886, -320)
 
 [node name="Ground69" parent="Ground" unique_id=1403367513 instance=ExtResource("2_j5yw3")]
-position = Vector2(3648, -192)
+position = Vector2(6014, -192)
 
 [node name="Ground70" parent="Ground" unique_id=1283456884 instance=ExtResource("2_j5yw3")]
-position = Vector2(3520, -192)
+position = Vector2(5886, -192)
 
 [node name="Ground13" parent="Ground" unique_id=1037655079 instance=ExtResource("2_j5yw3")]
 position = Vector2(448, 576)
@@ -226,17 +299,45 @@ position = Vector2(2496, 448)
 [node name="Ground38" parent="Ground" unique_id=1262401313 instance=ExtResource("2_j5yw3")]
 position = Vector2(2624, 448)
 
-[node name="Ground42" parent="Ground" unique_id=823971173 instance=ExtResource("2_j5yw3")]
+[node name="Ground71" parent="Ground" unique_id=114413012 instance=ExtResource("2_j5yw3")]
 position = Vector2(3008, 448)
 
-[node name="Ground43" parent="Ground" unique_id=1768173022 instance=ExtResource("2_j5yw3")]
+[node name="Ground71" parent="Ground/Ground71" unique_id=1568520367 instance=ExtResource("2_j5yw3")]
+position = Vector2(2880, 448)
+rotation = 0.011286035
+
+[node name="Ground72" parent="Ground" unique_id=637774530 instance=ExtResource("2_j5yw3")]
 position = Vector2(3136, 448)
 
-[node name="Ground44" parent="Ground" unique_id=1841627718 instance=ExtResource("2_j5yw3")]
+[node name="Ground71" parent="Ground/Ground72" unique_id=671088052 instance=ExtResource("2_j5yw3")]
+position = Vector2(2880, 448)
+rotation = 0.011286035
+
+[node name="Ground73" parent="Ground" unique_id=182807328 instance=ExtResource("2_j5yw3")]
 position = Vector2(3264, 448)
 
-[node name="Ground45" parent="Ground" unique_id=1300375052 instance=ExtResource("2_j5yw3")]
+[node name="Ground71" parent="Ground/Ground73" unique_id=913757496 instance=ExtResource("2_j5yw3")]
+position = Vector2(2880, 448)
+rotation = 0.011286035
+
+[node name="Ground74" parent="Ground" unique_id=395894414 instance=ExtResource("2_j5yw3")]
 position = Vector2(3392, 448)
+
+[node name="Ground71" parent="Ground/Ground74" unique_id=812361834 instance=ExtResource("2_j5yw3")]
+position = Vector2(2880, 448)
+rotation = 0.011286035
+
+[node name="Ground42" parent="Ground" unique_id=823971173 instance=ExtResource("2_j5yw3")]
+position = Vector2(5374, 448)
+
+[node name="Ground43" parent="Ground" unique_id=1768173022 instance=ExtResource("2_j5yw3")]
+position = Vector2(5502, 448)
+
+[node name="Ground44" parent="Ground" unique_id=1841627718 instance=ExtResource("2_j5yw3")]
+position = Vector2(5630, 448)
+
+[node name="Ground45" parent="Ground" unique_id=1300375052 instance=ExtResource("2_j5yw3")]
+position = Vector2(5758, 448)
 
 [node name="Ground46" parent="Ground" unique_id=604237907 instance=ExtResource("2_j5yw3")]
 position = Vector2(2496, 576)
@@ -245,15 +346,43 @@ position = Vector2(2496, 576)
 position = Vector2(2624, 576)
 
 [node name="Ground51" parent="Ground" unique_id=1958917388 instance=ExtResource("2_j5yw3")]
-position = Vector2(3008, 576)
+position = Vector2(5374, 576)
 
 [node name="Ground52" parent="Ground" unique_id=1482853438 instance=ExtResource("2_j5yw3")]
-position = Vector2(3136, 576)
+position = Vector2(5502, 576)
 
 [node name="Ground53" parent="Ground" unique_id=414573981 instance=ExtResource("2_j5yw3")]
-position = Vector2(3264, 576)
+position = Vector2(5630, 576)
 
 [node name="Ground54" parent="Ground" unique_id=55815724 instance=ExtResource("2_j5yw3")]
-position = Vector2(3392, 576)
+position = Vector2(5758, 576)
 
 [node name="UI" parent="." unique_id=1281271497 instance=ExtResource("4_kldst")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1912926038]
+
+[node name="Parallax2D" type="Parallax2D" parent="CanvasLayer2" unique_id=1037425608]
+scroll_scale = Vector2(3, 1)
+scroll_offset = Vector2(0, 135)
+repeat_size = Vector2(2500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer2/Parallax2D" unique_id=1704147428]
+position = Vector2(768, -71)
+texture = ExtResource("9_bf53h")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1316719174]
+position = Vector2(3776, 448)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D" unique_id=1778612229]
+self_modulate = Color(0.41568628, 1, 0.69803923, 1)
+scale = Vector2(4, 1)
+texture = ExtResource("1_7lihs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=1378091651]
+visible = false
+shape = SubResource("RectangleShape2D_71axn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D" unique_id=1910837833]
+libraries/ = SubResource("AnimationLibrary_3cx6b")
+autoplay = &"new_animation"
